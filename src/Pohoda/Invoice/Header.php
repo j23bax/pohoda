@@ -16,14 +16,19 @@ class Header extends Agenda
      *
      * @var array
      */
-    protected $_refElements = ['number', 'accounting', 'classificationVAT', 'classificationKVDPH', 'order', 'paymentType', 'priceLevel', 'account', 'paymentAccount', 'centre', 'activity', 'contract', 'regVATinEU', 'carrier'];
+    protected $_refElements = ['number', 'accounting', 'classificationVAT', 'classificationKVDPH', 'order', 'paymentType',
+        'priceLevel', 'account', 'paymentAccount', 'centre', 'activity', 'contract', 'regVATinEU', 'carrier'];
 
     /**
      * All elements
      *
      * @var array
      */
-    protected $_elements = ['extId', 'invoiceType', 'number', 'symVar', 'originalDocument', 'originalDocumentNumber', 'symPar', 'date', 'dateTax', 'dateAccounting', 'dateKHDPH', 'dateDue', 'dateApplicationVAT', 'dateDelivery', 'accounting', 'classificationVAT', 'classificationKVDPH', 'numberKHDPH', 'text', 'partnerIdentity', 'myIdentity', 'order', 'numberOrder', 'dateOrder', 'paymentType', 'priceLevel', 'account', 'symConst', 'symSpec', 'paymentAccount', 'paymentTerminal', 'centre', 'activity', 'contract', 'regVATinEU', 'note', 'carrier', 'intNote'];
+    protected $_elements = ['extId', 'invoiceType', 'number', 'symVar', 'originalDocument', 'originalDocumentNumber',
+        'symPar', 'date', 'dateTax', 'dateAccounting', 'dateKHDPH', 'dateDue', 'dateApplicationVAT', 'dateDelivery',
+        'accounting', 'classificationVAT', 'classificationKVDPH', 'numberKHDPH', 'text', 'partnerIdentity', 'myIdentity',
+        'order', 'numberOrder', 'dateOrder', 'paymentType', 'priceLevel', 'account', 'symConst', 'symSpec', 'paymentAccount',
+        'paymentTerminal', 'centre', 'activity', 'contract', 'regVATinEU', 'note', 'carrier', 'intNote'];
 
     /**
      * Configure options for options resolver
@@ -37,7 +42,11 @@ class Header extends Agenda
 
         // validate / format options
         $resolver->setDefault('invoiceType', 'issuedInvoice');
-        $resolver->setAllowedValues('invoiceType', ['issuedInvoice', 'issuedCreditNotice', 'issuedDebitNote', 'issuedAdvanceInvoice', 'receivable', 'issuedProformaInvoice', 'penalty', 'issuedCorrectiveTax', 'receivedInvoice', 'receivedCreditNotice', 'receivedDebitNote', 'receivedAdvanceInvoice', 'commitment', 'receivedProformaInvoice', 'receivedCorrectiveTax']);
+        $resolver->setAllowedValues('invoiceType',
+            ['issuedInvoice', 'issuedCreditNotice', 'issuedDebitNote', 'issuedAdvanceInvoice', 'receivable',
+                'issuedProformaInvoice', 'penalty', 'issuedCorrectiveTax', 'receivedInvoice', 'receivedCreditNotice',
+                'receivedDebitNote', 'receivedAdvanceInvoice', 'commitment', 'receivedProformaInvoice',
+                'receivedCorrectiveTax']);
         $resolver->setNormalizer('symVar', $resolver->string20Normalizer);
         $resolver->setNormalizer('originalDocument', $resolver->string32Normalizer);
         $resolver->setNormalizer('symPar', $resolver->string20Normalizer);

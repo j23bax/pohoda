@@ -6,6 +6,7 @@ use Rshop\Synchronization\Pohoda\Invoice\Header;
 use Rshop\Synchronization\Pohoda\Invoice\Item;
 use Rshop\Synchronization\Pohoda\Invoice\AdvancePaymentItem;
 use Rshop\Synchronization\Pohoda\Invoice\Summary;
+use Rshop\Synchronization\Pohoda\Type\LinksType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class Invoice extends Agenda
@@ -92,6 +93,12 @@ class Invoice extends Agenda
         return $this;
     }
 
+    public function addLinks($data) {
+        $this->_data['links'] = new LinksType($data, $this->_ico);
+
+        return $this;
+    }
+
     /**
      * Get XML
      *
@@ -102,7 +109,7 @@ class Invoice extends Agenda
         $xml = $this->_createXML()->addChild('inv:invoice', null, $this->_namespace('inv'));
         $xml->addAttribute('version', '2.0');
 
-        $this->_addElements($xml, ['header', 'invoiceDetail', 'summary'], 'inv');
+        $this->_addElements($xml, ['header', 'invoiceDetail', 'summary', 'links'], 'inv');
 
         return $xml;
     }
